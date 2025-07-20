@@ -1,0 +1,27 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Port, Direction
+from pybricks.robotics import DriveBase
+
+# Initialize hub to create a named object that communicates with the spike prime hub
+hub = PrimeHub()
+
+# Initialize drive motors: A is mounted counterclockwise, so reverse it
+left_motor = Motor(Port.A, positive_direction=Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.B)
+
+# Initialize extra motor on E
+extra_motor = Motor(Port.E)
+
+# Initialize sensors to name each sensor and the port it's plugged into
+color_sensor = ColorSensor(Port.C)
+ultrasonic = UltrasonicSensor(Port.D)
+force_sensor = ForceSensor(Port.F)
+
+# Setup drive base (update wheel_diameter and axle_track to match your robot)
+robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
+
+# Example: Print initial sensor values
+print("Color:", color_sensor.color())
+print("Distance (mm):", ultrasonic.distance())
+print("Force (N):", force_sensor.force())
